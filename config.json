@@ -1,0 +1,144 @@
+{
+  "project": {
+    "name": "Web Romántica para Mi Novia",
+    "version": "1.0.0",
+    "description": "Una sorpresa especial para el Día de la Novia con Karol G",
+    "author": "Tu Novio ❤️",
+    "date": "2025-01-08"
+  },
+  "novia": {
+    "nombre": "Mi Amor",
+    "fecha_especial": "Día de la Novia",
+    "artista_favorita": "Karol G",
+    "album_favorito": "Mañana Será Bonito",
+    "cancion_especial": "Ivonny Bonita",
+    "color_favorito": "#ff69b4"
+  },
+  "web": {
+    "titulo": "💕 Para Mi Novia - Karol G Special",
+    "descripcion": "Una sorpresa especial con Karol G",
+    "tema": "romántico",
+    "responsive": true,
+    "optimizado_iphone": true,
+    "url_principal": "http://localhost:3000",
+    "url_especial": "http://localhost:3000/karol-g-special"
+  },
+  "tecnologias": {
+    "frontend": ["HTML5", "CSS3", "JavaScript"],
+    "backend": ["Node.js", "Express.js"],
+    "real_time": ["Socket.IO"],
+    "styling": ["Tailwind CSS"],
+    "fuentes": ["Dancing Script", "Poppins"],
+    "iconos": ["Font Awesome"]
+  },
+  "caracteristicas": {
+    "musica": {
+      "karol_g_songs": [
+        {
+          "title": "Ivonny Bonita",
+          "album": "Mañana Será Bonito",
+          "dedication": "Esta canción es especialmente para ti, mi Ivonny bonita",
+          "special": true,
+          "effects": ["lluvia_corazones_dorados", "efecto_brillo", "notificacion_especial"]
+        },
+        {
+          "title": "Mi Ex Tenía Razón",
+          "album": "Mañana Será Bonito",
+          "dedication": "Porque contigo todo es perfecto",
+          "special": false
+        },
+        {
+          "title": "TQG",
+          "album": "Mañana Será Bonito",
+          "dedication": "Tú y yo somos el mejor equipo",
+          "special": false
+        },
+        {
+          "title": "Amargura",
+          "album": "Mañana Será Bonito",
+          "dedication": "Contigo solo hay dulzura",
+          "special": false
+        }
+      ]
+    },
+    "efectos_especiales": [
+      "lluvia_corazones_animados",
+      "efectos_al_hacer_click",
+      "animaciones_al_scroll",
+      "efectos_de_teclado",
+      "ondas_de_musica",
+      "efectos_especiales_ivonny_bonita"
+    ],
+    "diseño": {
+      "colores": {
+        "primario": "#ff69b4",
+        "secundario": "#ff1493",
+        "claro": "#ffe4e1",
+        "dorado": "#ffd700"
+      },
+      "tipografias": {
+        "titulos": "Dancing Script",
+        "texto": "Poppins"
+      },
+      "responsive": {
+        "iphone": true,
+        "android": true,
+        "tablet": true,
+        "desktop": true
+      }
+    }
+  },
+  "mensajes_romanticos": [
+    "💕 Te amo más que ayer, pero menos que mañana",
+    "💖 Eres mi todo, mi razón de ser",
+    "💝 Cada día contigo es un regalo del cielo",
+    "💗 Tu sonrisa ilumina mi mundo",
+    "💓 Eres mi inspiración y mi amor eterno",
+    "💕 Contigo todo es posible",
+    "💖 Gracias por ser exactamente quien eres",
+    "💝 Eres mi compañera, mi mejor amiga, mi todo",
+    "💗 Cada día que pasa, mi amor por ti crece más",
+    "💓 Eres mi sueño hecho realidad"
+  ],
+  "momentos_especiales": [
+    {
+      "titulo": "Nuestro Primer Beso",
+      "descripcion": "El momento que cambió nuestras vidas para siempre",
+      "icono": "💕"
+    },
+    {
+      "titulo": "Amaneceres Juntos",
+      "descripcion": "Cada mañana contigo es un nuevo regalo",
+      "icono": "🌅"
+    },
+    {
+      "titulo": "Bailando Karol G",
+      "descripcion": "Nuestras noches de baile y romance",
+      "icono": "🎵"
+    },
+    {
+      "titulo": "Futuro Juntos",
+      "descripcion": "Construyendo nuestros sueños lado a lado",
+      "icono": "🌟"
+    }
+  ],
+  "instrucciones": {
+    "instalacion": [
+      "npm install",
+      "npm run build",
+      "npm start"
+    ],
+    "uso": [
+      "Abrir http://localhost:3000",
+      "Explorar las canciones de Karol G",
+      "Hacer clic en los botones de reproducción",
+      "Ver efectos especiales al hacer scroll",
+      "Presionar 'H' para crear corazones",
+      "Visitar la página especial de Karol G"
+    ]
+  },
+  "dedicacion": {
+    "mensaje": "Este proyecto fue creado con todo mi amor y dedicación para sorprenderte en el Día de la Novia. Cada línea de código, cada efecto visual, cada mensaje fue pensado especialmente para ti. Espero que te guste esta sorpresa y que te haga sentir especial.",
+    "firma": "Con todo mi amor, tu novio ❤️"
+  }
+} 

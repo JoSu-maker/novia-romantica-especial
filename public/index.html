@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Mi Amor - Una Sorpresa Especial</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div id="particles-js"></div>
+    
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Loading screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="heart-loader"></div>
+            <h2>Cargando Amor...</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación flotante -->
+    <nav class="floating-nav">
+        <div class="nav-item active" data-section="home">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </div>
+        <div class="nav-item" data-section="music">
+            <i class="fas fa-music"></i>
+            <span>Música</span>
+        </div>
+        <div class="nav-item" data-section="gallery">
+            <i class="fas fa-images"></i>
+            <span>Galería</span>
+        </div>
+        <div class="nav-item" data-section="message">
+            <i class="fas fa-heart"></i>
+            <span>Mensaje</span>
+        </div>
+    </nav>
+
+    <!-- Sección Home -->
+    <section id="home" class="section active">
+        <div class="home-container">
+            <div class="hero-content">
+                <h1 class="main-title animate__animated animate__fadeInDown">
+                    <span class="title-line">Mi Amor</span>
+                    <span class="title-line">Especial</span>
+                </h1>
+                <p class="hero-subtitle animate__animated animate__fadeInUp">
+                    Una sorpresa romántica para ti, mi Ivonny bonita
+                </p>
+                <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
+                    <button class="btn-primary" onclick="scrollToSection('music')">
+                        <i class="fas fa-music"></i>
+                        Escuchar Música
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('message')">
+                        <i class="fas fa-heart"></i>
+                        Leer Mensaje
+                    </button>
+                </div>
+            </div>
+            
+            <div class="floating-elements">
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
+                <div class="floating-heart">💝</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Música -->
+    <section id="music" class="section">
+        <div class="music-container">
+            <h2 class="section-title">
+                <i class="fas fa-music"></i>
+                Canciones de Karol G para Ti
+            </h2>
+            
+            <div class="music-grid">
+                <!-- Ivonny Bonita - Destacada -->
+                <div class="music-card featured" data-song="ivonny-bonita">
+                    <div class="card-header">
+                        <div class="song-badge">⭐ ESPECIAL</div>
+                        <h3 class="song-title">Ivonny Bonita</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Esta canción es especialmente para ti, mi Ivonny bonita. 
+                            Eres mi inspiración y mi amor eterno."
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('ivonny-bonita')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- La Reina Presenta -->
+                <div class="music-card" data-song="la-reina-presenta">
+                    <div class="card-header">
+                        <h3 class="song-title">La Reina Presenta</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi reina, mi amor verdadero"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('la-reina-presenta')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Papasito -->
+                <div class="music-card" data-song="papasito">
+                    <div class="card-header">
+                        <h3 class="song-title">Papasito</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi amor verdadero, mi todo"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('papasito')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LATINA FOREVA -->
+                <div class="music-card" data-song="latina-foreva">
+                    <div class="card-header">
+                        <h3 class="song-title">LATINA FOREVA</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi latina para siempre"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('latina-foreva')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dile Luna -->
+                <div class="music-card" data-song="dile-luna">
+                    <div class="card-header">
+                        <h3 class="song-title">Dile Luna</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi luna, mi luz en la oscuridad"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('dile-luna')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuando Me Muera Te Olvido -->
+                <div class="music-card" data-song="cuando-me-muera-te-olvido">
+                    <div class="card-header">
+                        <h3 class="song-title">Cuando Me Muera Te Olvido</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo nunca te olvido"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('cuando-me-muera-te-olvido')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coleccionando Heridas -->
+                <div class="music-card" data-song="coleccionando-heridas">
+                    <div class="card-header">
+                        <h3 class="song-title">Coleccionando Heridas</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo solo hay amor y felicidad"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('coleccionando-heridas')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Un Gatito Me Llamó -->
+                <div class="music-card" data-song="un-gatito-me-llamo">
+                    <div class="card-header">
+                        <h3 class="song-title">Un Gatito Me Llamó</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi gatito especial"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('un-gatito-me-llamo')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amiga Mía -->
+                <div class="music-card" data-song="amiga-mia">
+                    <div class="card-header">
+                        <h3 class="song-title">Amiga Mía</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi amiga y mi amor"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('amiga-mia')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bandida Entrenada -->
+                <div class="music-card" data-song="bandida-entrenada">
+                    <div class="card-header">
+                        <h3 class="song-title">Bandida Entrenada</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi bandida especial"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('bandida-entrenada')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ese Hombre Es Malo -->
+                <div class="music-card" data-song="ese-hombre-es-malo">
+                    <div class="card-header">
+                        <h3 class="song-title">Ese Hombre Es Malo</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo todo es bueno y hermoso"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('ese-hombre-es-malo')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A Su Boca La Amo (Interlude) -->
+                <div class="music-card" data-song="a-su-boca-la-amo">
+                    <div class="card-header">
+                        <h3 class="song-title">A Su Boca La Amo</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque amo todo de ti"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('a-su-boca-la-amo')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verano Rosa -->
+                <div class="music-card" data-song="verano-rosa">
+                    <div class="card-header">
+                        <h3 class="song-title">Verano Rosa</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo todo es rosa y hermoso"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('verano-rosa')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Puedo Vivir Sin Él -->
+                <div class="music-card" data-song="no-puedo-vivir-sin-el">
+                    <div class="card-header">
+                        <h3 class="song-title">No Puedo Vivir Sin Él</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque no puedo vivir sin ti"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('no-puedo-vivir-sin-el')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tu Perfume -->
+                <div class="music-card" data-song="tu-perfume">
+                    <div class="card-header">
+                        <h3 class="song-title">Tu Perfume</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque tu perfume me enamora"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('tu-perfume')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FKN Movie -->
+                <div class="music-card" data-song="fkn-movie">
+                    <div class="card-header">
+                        <h3 class="song-title">FKN Movie</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo es como una película de amor"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('fkn-movie')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Se Puso Linda -->
+                <div class="music-card" data-song="se-puso-linda">
+                    <div class="card-header">
+                        <h3 class="song-title">Se Puso Linda</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres la más linda del mundo"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('se-puso-linda')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viajando Por El Mundo -->
+                <div class="music-card" data-song="viajando-por-el-mundo">
+                    <div class="card-header">
+                        <h3 class="song-title">Viajando Por El Mundo</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque contigo quiero viajar por el mundo"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('viajando-por-el-mundo')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Si Antes Te Hubiera Conocido -->
+                <div class="music-card" data-song="si-antes-te-hubiera-conocido">
+                    <div class="card-header">
+                        <h3 class="song-title">Si Antes Te Hubiera Conocido</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque ahora que te conozco, mi vida es perfecta"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('si-antes-te-hubiera-conocido')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tropicoqueta -->
+                <div class="music-card" data-song="tropicoqueta">
+                    <div class="card-header">
+                        <h3 class="song-title">Tropicoqueta</h3>
+                        <p class="song-album">Tropicoqueta</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="song-dedication">
+                            "Porque eres mi tropicoqueta especial"
+                        </p>
+                        <div class="song-controls">
+                            <button class="play-btn" onclick="playSong('tropicoqueta')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="gallery" class="section">
+        <div class="gallery-container">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i>
+                Nuestros Momentos Especiales
+            </h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-moment="primer-beso">
+                    <div class="moment-card">
+                        <div class="moment-icon">💕</div>
+                        <h3>Nuestro Primer Beso</h3>
+                        <p>El momento que cambió nuestras vidas para siempre</p>
+                        <div class="moment-date">Ese día especial</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-moment="primer-date">
+                    <div class="moment-card">
+                        <div class="moment-icon">🌹</div>
+                        <h3>Nuestra Primera Cita</h3>
+                        <p>Cuando todo comenzó a ser mágico</p>
+                        <div class="moment-date">El inicio de todo</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-moment="declaracion">
+                    <div class="moment-card">
+                        <div class="moment-icon">💍</div>
+                        <h3>Te Amo</h3>
+                        <p>Las palabras más hermosas que he dicho</p>
+                        <div class="moment-date">Para siempre</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-moment="viajes">
+                    <div class="moment-card">
+                        <div class="moment-icon">✈️</div>
+                        <h3>Nuestros Viajes</h3>
+                        <p>Cada aventura contigo es perfecta</p>
+                        <div class="moment-date">Más por venir</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-moment="momentos-cotidianos">
+                    <div class="moment-card">
+                        <div class="moment-icon">☕</div>
+                        <h3>Momentos Cotidianos</h3>
+                        <p>Los pequeños detalles que hacen todo especial</p>
+                        <div class="moment-date">Cada día</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-moment="futuro">
+                    <div class="moment-card">
+                        <div class="moment-icon">🌟</div>
+                        <h3>Nuestro Futuro</h3>
+                        <p>Todo lo que vamos a vivir juntos</p>
+                        <div class="moment-date">Por venir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Mensaje -->
+    <section id="message" class="section">
+        <div class="message-container">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i>
+                Mi Mensaje Para Ti
+            </h2>
+            
+            <div class="message-content">
+                <div class="message-card">
+                    <div class="message-header">
+                        <div class="message-icon">💕</div>
+                        <h3>Mi Ivonny Bonita</h3>
+                    </div>
+                    
+                    <div class="message-text">
+                        <p>
+                            Mi amor, cada día que pasa me doy cuenta de lo afortunado que soy de tenerte en mi vida. 
+                            Eres mi inspiración, mi motivación y mi felicidad.
+                        </p>
+                        
+                        <p>
+                            Esta web es solo una pequeña muestra de todo el amor que siento por ti. 
+                            Cada canción de Karol G me recuerda a ti, especialmente "Ivonny Bonita" 
+                            que es perfecta para describir lo hermosa que eres.
+                        </p>
+                        
+                        <p>
+                            Quiero que sepas que eres mi todo, mi presente y mi futuro. 
+                            Contigo quiero vivir cada momento, cada aventura y cada sueño.
+                        </p>
+                        
+                        <p>
+                            Te amo infinitamente y siempre serás mi Ivonny bonita.
+                        </p>
+                    </div>
+                    
+                    <div class="message-signature">
+                        <p>Con todo mi amor,</p>
+                        <h4>Tu novio ❤️</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio elements -->
+    <audio id="ivonny-bonita" preload="auto">
+        <source src="./audio/ivonny-bonita.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="la-reina-presenta" preload="auto">
+        <source src="./audio/la-reina-presenta.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="papasito" preload="auto">
+        <source src="./audio/papasito.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="latina-foreva" preload="auto">
+        <source src="./audio/latina-foreva.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dile-luna" preload="auto">
+        <source src="./audio/dile-luna.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cuando-me-muera-te-olvido" preload="auto">
+        <source src="./audio/cuando-me-muera-te-olvido.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="coleccionando-heridas" preload="auto">
+        <source src="./audio/coleccionando-heridas.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="un-gatito-me-llamo" preload="auto">
+        <source src="./audio/un-gatito-me-llamo.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="amiga-mia" preload="auto">
+        <source src="./audio/amiga-mia.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bandida-entrenada" preload="auto">
+        <source src="./audio/bandida-entrenada.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ese-hombre-es-malo" preload="auto">
+        <source src="./audio/ese-hombre-es-malo.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="a-su-boca-la-amo" preload="auto">
+        <source src="./audio/a-su-boca-la-amo.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="verano-rosa" preload="auto">
+        <source src="./audio/verano-rosa.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="no-puedo-vivir-sin-el" preload="auto">
+        <source src="./audio/no-puedo-vivir-sin-el.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="tu-perfume" preload="auto">
+        <source src="./audio/tu-perfume.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="fkn-movie" preload="auto">
+        <source src="./audio/fkn-movie.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="se-puso-linda" preload="auto">
+        <source src="./audio/se-puso-linda.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="viajando-por-el-mundo" preload="auto">
+        <source src="./audio/viajando-por-el-mundo.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="si-antes-te-hubiera-conocido" preload="auto">
+        <source src="./audio/si-antes-te-hubiera-conocido.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="tropicoqueta" preload="auto">
+        <source src="./audio/tropicoqueta.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html> 
