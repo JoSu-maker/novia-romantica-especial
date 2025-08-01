@@ -740,6 +740,34 @@ body {
     }
 }
 
+/* Estilos específicos para iPhone */
+.iphone-device .play-btn {
+    min-height: 60px;
+    min-width: 60px;
+    font-size: 1.4rem;
+}
+
+.iphone-device .music-card {
+    padding: 30px;
+}
+
+.iphone-device .notification {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+}
+
+.iphone-device .section-title {
+    font-size: 2rem;
+}
+
+.iphone-device .main-title {
+    font-size: 3rem;
+}
+
+.iphone-device .hero-subtitle {
+    font-size: 1.3rem;
+}
+
 /* Efectos especiales */
 .heart-rain {
     position: fixed;

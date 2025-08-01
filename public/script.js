@@ -89,10 +89,29 @@ function initializeApp() {
     // Inicializar efectos interactivos
     initInteractiveEffects();
     
+    // Detectar iPhone y mostrar instrucciones si es necesario
+    detectIPhone();
+    
     // Ocultar loading screen después de 3 segundos
     setTimeout(() => {
         hideLoadingScreen();
     }, 3000);
+}
+
+// Función para detectar iPhone
+function detectIPhone() {
+    const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+    
+    if (isIPhone || isSafari) {
+        // Agregar clase al body para estilos específicos
+        document.body.classList.add('iphone-device');
+        
+        // Mostrar notificación especial para iPhone
+        setTimeout(() => {
+            showNotification('📱 Optimizado para iPhone - Toca la pantalla para activar audio');
+        }, 4000);
+    }
 }
 
 // Inicializar partículas
@@ -348,6 +367,12 @@ function resumeSong(songId) {
 // Función para reproducir audio
 function playAudio(audio, songId) {
     try {
+        // Configuraciones específicas para iPhone
+        audio.muted = false;
+        audio.volume = 1.0;
+        audio.preload = 'auto';
+        
+        // Intentar reproducir con manejo específico para iOS
         const playPromise = audio.play();
         
         if (playPromise !== undefined) {
@@ -377,7 +402,14 @@ function playAudio(audio, songId) {
                 
             }).catch(error => {
                 console.error('Error reproduciendo audio:', error);
-                showAudioOptions(songId);
+                
+                // Manejo específico para iOS
+                if (error.name === 'NotAllowedError') {
+                    showNotification('📱 Toca la pantalla primero para activar el audio');
+                    showIPhoneInstructions(songId);
+                } else {
+                    showAudioOptions(songId);
+                }
             });
         }
     } catch (error) {
@@ -1013,6 +1045,154 @@ function showNotification(message) {
             notification.remove();
         }, 300);
     }, 3000);
+}
+
+// Función para mostrar instrucciones específicas para iPhone
+function showIPhoneInstructions(songId) {
+    const modal = document.createElement('div');
+    modal.className = 'iphone-modal';
+    modal.innerHTML = `
+        <div class="iphone-modal-content">
+            <div class="iphone-modal-header">
+                <h3>📱 Instrucciones para iPhone</h3>
+                <button onclick="closeIPhoneModal()" class="close-btn">×</button>
+            </div>
+            <div class="iphone-modal-body">
+                <p>Para reproducir música en tu iPhone:</p>
+                <ol>
+                    <li>🔊 Asegúrate de que el volumen esté activado</li>
+                    <li>👆 Toca cualquier parte de la pantalla primero</li>
+                    <li>🎵 Luego toca el botón de reproducción</li>
+                    <li>📱 Si no funciona, prueba en Safari</li>
+                </ol>
+                <div class="iphone-tips">
+                    <p><strong>💡 Consejos:</strong></p>
+                    <ul>
+                        <li>Desactiva el modo "No molestar"</li>
+                        <li>Asegúrate de que Safari permita audio</li>
+                        <li>Prueba con auriculares para mejor calidad</li>
+                    </ul>
+                </div>
+                <button onclick="retryPlaySong('${songId}')" class="retry-btn">
+                    🎵 Intentar Reproducir de Nuevo
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Agregar estilos dinámicos
+    const style = document.createElement('style');
+    style.textContent = `
+        .iphone-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        .iphone-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .iphone-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .iphone-modal-header h3 {
+            margin: 0;
+            color: #ff69b4;
+            font-size: 1.3rem;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            color: #ff69b4;
+        }
+        .iphone-modal-body ol {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .iphone-modal-body li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .iphone-tips {
+            background: #fff5f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff69b4;
+        }
+        .iphone-tips ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .retry-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,105,180,0.4);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Función para cerrar el modal de iPhone
+function closeIPhoneModal() {
+    const modal = document.querySelector('.iphone-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+// Función para reintentar reproducir
+function retryPlaySong(songId) {
+    closeIPhoneModal();
+    setTimeout(() => {
+        playSong(songId);
+    }, 500);
 }
 
 // Agregar estilos CSS dinámicos
