@@ -107,10 +107,56 @@ function detectIPhone() {
         // Agregar clase al body para estilos específicos
         document.body.classList.add('iphone-device');
         
-        // Mostrar notificación especial para iPhone
+        // Mostrar modal de activación de audio para iOS
         setTimeout(() => {
-            showNotification('📱 Optimizado para iPhone - Toca la pantalla para activar audio');
-        }, 4000);
+            showIOSAudioModal();
+        }, 2000);
+    }
+}
+
+// Función para mostrar modal de activación de audio en iOS
+function showIOSAudioModal() {
+    const modal = document.getElementById('iosAudioModal');
+    if (modal) {
+        modal.classList.add('show');
+    }
+}
+
+// Función para activar audio en iOS
+function activateIOSAudio() {
+    // Crear un audio temporal para "desbloquear" el audio
+    const tempAudio = new Audio();
+    tempAudio.src = './audio/ivonny-bonita.mp3';
+    tempAudio.volume = 0.1; // Volumen muy bajo para no molestar
+    
+    // Intentar reproducir para activar el audio
+    tempAudio.play().then(() => {
+        // Pausar inmediatamente
+        tempAudio.pause();
+        
+        // Ocultar modal
+        const modal = document.getElementById('iosAudioModal');
+        if (modal) {
+            modal.classList.remove('show');
+        }
+        
+        // Mostrar notificación de éxito
+        showNotification('✅ Audio activado - ¡Ya puedes reproducir música!');
+        
+        // Marcar como activado
+        window.audioActivated = true;
+        
+    }).catch(error => {
+        console.error('Error activando audio:', error);
+        showNotification('❌ Error activando audio - Intenta de nuevo');
+    });
+}
+
+// Función para cerrar modal de iOS
+function closeIOSModal() {
+    const modal = document.getElementById('iosAudioModal');
+    if (modal) {
+        modal.classList.remove('show');
     }
 }
 
@@ -291,6 +337,13 @@ function playSong(songId) {
     
     if (!audio) {
         showAudioOptions(songId);
+        return;
+    }
+    
+    // Verificar si estamos en iOS y el audio no está activado
+    const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    if (isIPhone && !window.audioActivated) {
+        showIOSAudioModal();
         return;
     }
     

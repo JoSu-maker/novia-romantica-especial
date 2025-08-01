@@ -26,6 +26,37 @@
             </div>
         </div>
     </div>
+    
+    <!-- iOS Audio Unlock Modal -->
+    <div class="ios-audio-modal" id="iosAudioModal">
+        <div class="ios-modal-content">
+            <div class="ios-modal-header">
+                <h3>🎵 Activar Audio en iPhone</h3>
+                <button onclick="closeIOSModal()" class="ios-close-btn">×</button>
+            </div>
+            <div class="ios-modal-body">
+                <p>Para reproducir música en tu iPhone, necesitamos tu permiso:</p>
+                <div class="ios-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p>Toca el botón de abajo para activar el audio</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p>Confirma que quieres permitir audio</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p>¡Disfruta de la música de Karol G!</p>
+                    </div>
+                </div>
+                <button class="ios-activate-btn" onclick="activateIOSAudio()">
+                    🎵 Activar Audio
+                </button>
+                <p class="ios-note">* Esto es necesario solo la primera vez</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Navegación flotante -->
     <nav class="floating-nav">
