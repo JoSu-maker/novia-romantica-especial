@@ -889,6 +889,15 @@ body {
     box-shadow: 0 8px 20px rgba(255,105,180,0.4);
 }
 
+.ios-activate-btn-alt {
+    background: var(--gradient-secondary);
+    margin-top: 10px;
+}
+
+.ios-activate-btn-alt:hover {
+    background: var(--gradient-primary);
+}
+
 .ios-note {
     font-size: 0.9rem;
     color: #666;

@@ -102,8 +102,9 @@ function initializeApp() {
 function detectIPhone() {
     const isIPhone = /iPhone|iPad|iPod/.test(navigator.userAgent);
     const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+    const isChrome = /CriOS/.test(navigator.userAgent);
     
-    if (isIPhone || isSafari) {
+    if (isIPhone) {
         // Agregar clase al body para estilos específicos
         document.body.classList.add('iphone-device');
         
@@ -111,6 +112,13 @@ function detectIPhone() {
         setTimeout(() => {
             showIOSAudioModal();
         }, 2000);
+        
+        // Si no es Safari, mostrar advertencia
+        if (!isSafari && !isChrome) {
+            setTimeout(() => {
+                showNotification('📱 Para mejor compatibilidad, usa Safari');
+            }, 6000);
+        }
     }
 }
 
@@ -120,36 +128,72 @@ function showIOSAudioModal() {
     if (modal) {
         modal.classList.add('show');
     }
+    
+    // También agregar listener para el primer toque en la página
+    document.addEventListener('touchstart', function firstPageTouch() {
+        document.removeEventListener('touchstart', firstPageTouch);
+        
+        // Intentar activar audio automáticamente después del primer toque
+        setTimeout(() => {
+            if (!window.audioActivated) {
+                activateIOSAudioAlternative();
+            }
+        }, 1000);
+    }, { once: true });
 }
 
 // Función para activar audio en iOS
 function activateIOSAudio() {
-    // Crear un audio temporal para "desbloquear" el audio
-    const tempAudio = new Audio();
-    tempAudio.src = './audio/ivonny-bonita.mp3';
-    tempAudio.volume = 0.1; // Volumen muy bajo para no molestar
+    // Usar el elemento de audio real para desbloquear
+    const unlockAudio = document.getElementById('ios-unlock-audio');
+    
+    if (!unlockAudio) {
+        showNotification('❌ Error: No se encontró el elemento de audio');
+        return;
+    }
+    
+    // Configurar el audio
+    unlockAudio.volume = 0.1; // Volumen muy bajo
+    unlockAudio.currentTime = 0;
     
     // Intentar reproducir para activar el audio
-    tempAudio.play().then(() => {
-        // Pausar inmediatamente
-        tempAudio.pause();
-        
-        // Ocultar modal
-        const modal = document.getElementById('iosAudioModal');
-        if (modal) {
-            modal.classList.remove('show');
-        }
-        
-        // Mostrar notificación de éxito
-        showNotification('✅ Audio activado - ¡Ya puedes reproducir música!');
-        
-        // Marcar como activado
-        window.audioActivated = true;
-        
-    }).catch(error => {
-        console.error('Error activando audio:', error);
-        showNotification('❌ Error activando audio - Intenta de nuevo');
-    });
+    const playPromise = unlockAudio.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            // Pausar después de 100ms
+            setTimeout(() => {
+                unlockAudio.pause();
+                
+                // Ocultar modal
+                const modal = document.getElementById('iosAudioModal');
+                if (modal) {
+                    modal.classList.remove('show');
+                }
+                
+                // Mostrar notificación de éxito
+                showNotification('✅ Audio activado - ¡Ya puedes reproducir música!');
+                
+                // Marcar como activado
+                window.audioActivated = true;
+                
+            }, 100);
+            
+        }).catch(error => {
+            console.error('Error activando audio:', error);
+            
+            // Mostrar instrucciones más específicas
+            showNotification('📱 Toca la pantalla primero, luego intenta de nuevo');
+            
+            // Agregar listener para el primer toque
+            document.addEventListener('touchstart', function firstTouch() {
+                document.removeEventListener('touchstart', firstTouch);
+                setTimeout(() => {
+                    activateIOSAudio();
+                }, 500);
+            }, { once: true });
+        });
+    }
 }
 
 // Función para cerrar modal de iOS
@@ -157,6 +201,41 @@ function closeIOSModal() {
     const modal = document.getElementById('iosAudioModal');
     if (modal) {
         modal.classList.remove('show');
+    }
+}
+
+// Función alternativa para iOS - usar cualquier audio existente
+function activateIOSAudioAlternative() {
+    // Intentar con el primer audio disponible
+    const firstAudio = document.getElementById('ivonny-bonita');
+    
+    if (firstAudio) {
+        firstAudio.volume = 0.1;
+        firstAudio.currentTime = 0;
+        
+        const playPromise = firstAudio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                setTimeout(() => {
+                    firstAudio.pause();
+                    
+                    // Ocultar modal
+                    const modal = document.getElementById('iosAudioModal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                    }
+                    
+                    showNotification('✅ Audio activado - ¡Ya puedes reproducir música!');
+                    window.audioActivated = true;
+                    
+                }, 100);
+                
+            }).catch(error => {
+                console.error('Error con audio alternativo:', error);
+                showNotification('📱 Usa Safari y toca la pantalla primero');
+            });
+        }
     }
 }
 

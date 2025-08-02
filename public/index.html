@@ -51,9 +51,12 @@
                     </div>
                 </div>
                 <button class="ios-activate-btn" onclick="activateIOSAudio()">
-                    🎵 Activar Audio
+                    🎵 Activar Audio (Opción 1)
                 </button>
-                <p class="ios-note">* Esto es necesario solo la primera vez</p>
+                <button class="ios-activate-btn ios-activate-btn-alt" onclick="activateIOSAudioAlternative()">
+                    🎵 Activar Audio (Opción 2)
+                </button>
+                <p class="ios-note">* Si una opción no funciona, prueba la otra</p>
             </div>
         </div>
     </div>
@@ -723,6 +726,11 @@
     </audio>
     <audio id="tropicoqueta" preload="auto">
         <source src="./audio/tropicoqueta.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio temporal para desbloquear iOS -->
+    <audio id="ios-unlock-audio" preload="auto" style="display: none;">
+        <source src="./audio/ivonny-bonita.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Scripts -->
